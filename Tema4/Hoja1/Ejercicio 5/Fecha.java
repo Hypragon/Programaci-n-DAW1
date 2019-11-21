@@ -77,98 +77,24 @@ public class Fecha {
 		return booleano;
 	}
 	public String getCadenaMes() {
-		String cadenames = "error";
-		switch (this.mes) {
-		default:
-			break;
-		case 1:
-			cadenames = "Enero";
-			break;
-		case 2:
-			cadenames = "Febrero";
-			break;
-		case 3:
-			cadenames = "Marzo";
-			break;
-		case 4:
-			cadenames = "Abril";
-			break;
-		case 5:
-			cadenames = "Mayo";
-			break;
-		case 6:
-			cadenames = "Junio";
-			break;
-		case 7:
-			cadenames = "Julio";
-			break;
-		case 8:
-			cadenames = "Agosto";
-			break;
-		case 9:
-			cadenames = "Septiembre";
-			break;
-		case 10:
-			cadenames = "Octubre";
-			break;
-		case 11:
-			cadenames = "Noviembre";
-			break;
-		case 12:
-			cadenames = "Diciembre";
-			break;
-		}
-		return cadenames.toLowerCase();
+		String meses[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+		return meses[this.mes - 1];
 	}
 	public Integer getDiasMes() {
-		Integer dias = null;
-		switch (this.mes) {
-		case 1:
-		case 3:
-		case 5:
-		case 7:
-		case 8:
-		case 10:
-		case 12:
-			dias = 31;
-			break;
-		case 2:
-			if (this.esBisiesto()) dias = 29;
-			else dias = 28;
-			break;
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-			dias = 30;
-			break;
+		Integer dias[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		if (this.esBisiesto() && this.mes == 2) {
+			return dias[this.mes - 1] + 1;
+		} else {
+			return dias[this.mes - 1];
 		}
-		return dias;
 	}
 	public static Integer getDiasMes(Integer mes, Integer anyo) {
-		Integer dias = null;
-		switch (mes) {
-		case 1:
-		case 3:
-		case 5:
-		case 7:
-		case 8:
-		case 10:
-		case 12:
-			dias = 31;
-			break;
-		case 2:
-			if (Fecha.esBisiesto(anyo)) dias = 29;
-			else dias = 28;
-			break;
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-			dias = 30;
-			break;
+		Integer dias[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		if (Fecha.esBisiesto(anyo) && mes == 2) {
+			return dias[mes - 1] + 1;
+		} else {
+			return dias[mes - 1];
 		}
-		return dias;
 	}
 	public String getCadenaFecha1() {
 		return this.dia + "-" + this.mes + "-" + this.anyo;
