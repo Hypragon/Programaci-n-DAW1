@@ -42,8 +42,11 @@ public class CuentaCorriente{
 	}
 	public String toString() {
 		String estado;
-		if (this.cerrado) estado = "Cuenta cerrada";
-		else estado = "Cuenta abierta";
+		if (this.cerrado) {
+			estado = "Cuenta cerrada";
+		} else {
+			estado = "Cuenta abierta";
+		}
 		return "Número de cuenta: " + numCuenta + "\nSaldo de la cuenta: " + saldo + "€\nNombre de cliente: " + cliente + "\nEstado de cuenta: " + estado;
 	}
 	public void cerrarCuenta() {

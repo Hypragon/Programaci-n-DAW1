@@ -57,11 +57,11 @@ public class FusionCuentas {
 				break;
 			case 5:
 				System.out.println("Lista de cuentas añadidas:");
-				for (int j = 0; j < cuentas.length; j++) {
-					if (cuentas[j] != null) {
-						System.out.println(cuentas[j] + "\n-------------------------");
+				for (int contador = 0; contador < cuentas.length; contador++) {
+					if (cuentas[contador] != null) {
+						System.out.println(cuentas[contador] + "\n-------------------------");
 					} else {
-						if (j == 0) {
+						if (contador == 0) {
 							System.out.println("No se ha añadido ninguna cuenta");
 						}
 						break;

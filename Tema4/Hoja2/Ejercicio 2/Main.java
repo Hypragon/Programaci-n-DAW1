@@ -35,8 +35,8 @@ public class Main {
 				if (clientes.length > 0) {
 					contadorCuentas++;
 					System.out.println("Lista de clientes:");
-					for (int i = 0; i < clientes.length; i++) {
-						System.out.println(i + ". " + clientes[i]);
+					for (int contadorBucle = 0; contadorBucle < clientes.length; contadorBucle++) {
+						System.out.println(contadorBucle + ". " + clientes[contadorBucle]);
 					}
 					seleccionCliente = Metodo.getIntBetween(0, clientes.length - 1, "Elige cual va a ser el dueño de la cuenta");
 					cuentas = Arrays.copyOf(cuentas, cuentas.length + 1);
@@ -58,7 +58,9 @@ public class Main {
 				if (cuentas.length > 0) {
 					numeroDouble = Metodo.getDoublePos("Introduce cuanto dinero quieres ingresar");
 					sePuede = cuentas[contadorCuentas].retiraEfectivo(numeroDouble);
-					if (!sePuede) System.out.println("En la cuenta actualmente hay " + cuentas[contadorCuentas].getSaldo() + "€, por lo que no puede retirar " + numeroDouble + "€");
+					if (!sePuede) {
+						System.out.println("En la cuenta actualmente hay " + cuentas[contadorCuentas].getSaldo() + "€, por lo que no puede retirar " + numeroDouble + "€");
+					}
 				} else {
 					System.out.println("Antes de cualquier otra operación, debe crear al menos una cuenta");
 				}
@@ -75,8 +77,8 @@ public class Main {
 				if (cuentas.length == 0) {
 					System.out.println("No se ha añadido ninguna cuenta");
 				} else {
-					for (int i = 0; i < cuentas.length; i++) {
-						System.out.println(cuentas[i] + "\n-------------------------");
+					for (int contadorBucle = 0; contadorBucle < cuentas.length; contadorBucle++) {
+						System.out.println(cuentas[contadorBucle] + "\n-------------------------");
 					}
 				}
 				break;
@@ -100,12 +102,12 @@ public class Main {
 				}
 				break;
 			case 10:
-				for (int i = 0; i < cuentas.length; i++) {
-					System.out.println(cuentas[i]);
+				for (int contadorBucle = 0; contadorBucle < cuentas.length; contadorBucle++) {
+					System.out.println(cuentas[contadorBucle]);
 				}
 				seleccionCliente = Metodo.getIntBetween(0, cuentas.length - 1, "Elige de que cliente quieres ver las cuentas");
-				for (int i = 0; i < clientes[seleccionCliente].getCuentasCorrientes().length; i++) {
-					System.out.println(clientes[seleccionCliente].getCuentasCorrientes()[i]);
+				for (int contadorBucle = 0; contadorBucle < clientes[seleccionCliente].getCuentasCorrientes().length; contadorBucle++) {
+					System.out.println(clientes[seleccionCliente].getCuentasCorrientes()[contadorBucle]);
 				}
 				break;
 			}
