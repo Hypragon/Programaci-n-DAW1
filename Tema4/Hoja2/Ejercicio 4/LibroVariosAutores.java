@@ -27,7 +27,7 @@ public class LibroVariosAutores {
 			case 1:
 				primeraCadenaUtil = Metodo.getString("Introduce el nombre del autor");
 				segundaCadenaUtil = Metodo.getString("Introduce el email del autor");
-				genero = Metodo.getCharGender("Introduce el género del autor");
+				genero = Metodo.getCharGender("Introduce el gÃ©nero del autor");
 				listaAutores = Arrays.copyOf(listaAutores, listaAutores.length + 1);
 				listaAutores[listaAutores.length - 1] = new Autor(primeraCadenaUtil, segundaCadenaUtil, genero);
 				break;
@@ -35,15 +35,15 @@ public class LibroVariosAutores {
 				if (listaAutores.length < 1) System.out.println("Crea un autor antes de crear un libro");				
 				else {
 					primeraCadenaUtil = Metodo.getString("Introduce el nombre del libro");
-					for (int i = 0; i < listaAutores.length; i++) {
-						System.out.println(i + ". " + listaAutores[i]);
+					for (int contadorBucle = 0; contadorBucle < listaAutores.length; contadorBucle++) {
+						System.out.println(contadorBucle + ". " + listaAutores[contadorBucle]);
 						System.out.println("------------------");
 					}
-					primerNumeroUtil = Metodo.getIntBetween(0, listaAutores.length - 1, "Introduce el número asignado al autor");
+					primerNumeroUtil = Metodo.getIntBetween(0, listaAutores.length - 1, "Introduce el nÃºmero asignado al autor");
 					while (primerNumeroUtil != -1 && autoresActuales.length < listaAutores.length){
 						autoresActuales = Arrays.copyOf(autoresActuales, autoresActuales.length + 1);
 						autoresActuales[autoresActuales.length - 1] = listaAutores[primerNumeroUtil];
-						primerNumeroUtil = Metodo.getIntBetween(-1, listaAutores.length - 1, "Introduce el número asignado al autor, (-1) para acabar");
+						primerNumeroUtil = Metodo.getIntBetween(-1, listaAutores.length - 1, "Introduce el nÃºmero asignado al autor, (-1) para acabar");
 					}
 					numeroDouble = Metodo.getDoublePos("Introduce el precio del libro");
 					segundoNumeroUtil = Metodo.getIntPos("Introduce la cantidad de libros que quieres crear");
@@ -58,10 +58,12 @@ public class LibroVariosAutores {
 				}
 				break;
 			case 3:
-				if (listaAutores.length < 1) System.out.println("Crea un autor antes de editar autores");
+				if (listaAutores.length < 1) {
+					System.out.println("Crea un autor antes de editar autores");
+				}
 				else {
-					for (int i = 0; i < listaAutores.length; i++) {
-						System.out.println(i + ". " + listaAutores[i]);
+					for (int contadorBucle = 0; contadorBucle < listaAutores.length; contadorBucle++) {
+						System.out.println(contadorBucle + ". " + listaAutores[contadorBucle]);
 						System.out.println("------------------");
 					}
 					primerNumeroUtil = Metodo.getIntBetween(0, listaAutores.length - 1, "Elige que autor quieres editar");
@@ -87,16 +89,18 @@ public class LibroVariosAutores {
 				}
 				break;
 			case 4:
-				if (listaLibros.length < 1) System.out.println("Crea libros antes de editar un libro");
+				if (listaLibros.length < 1) {
+					System.out.println("Crea libros antes de editar un libro");
+				}
 				else {
-					for (int i = 0; i < listaLibros.length; i++) {
-						System.out.println(i + ". " + listaLibros[i].cadenaLibro());
+					for (int contadorBucle = 0; contadorBucle < listaLibros.length; contadorBucle++) {
+						System.out.println(contadorBucle + ". " + listaLibros[contadorBucle].cadenaLibro());
 						System.out.println("------------------");
 					}
 					primerNumeroUtil = Metodo.getIntBetween(0, listaLibros.length - 1, "Elige que libro quieres editar");
 					do {
 						tercerNumeroUtil = Metodo.getIntBetween(0, 4, "1. Cambiar titulo\n"
-								+ "2. Añadir autores\n"
+								+ "2. AÃ±adir autores\n"
 								+ "3. Eliminar autores\n"
 								+ "4. Cambiar precio\n"
 								+ "5. Cambiar cantidad\n"
@@ -113,18 +117,18 @@ public class LibroVariosAutores {
 							autoresActuales = listaLibros[primerNumeroUtil].getAutores();
 							System.out.println("Los autores actuales son: " + autoresActuales + "\r");
 							System.out.println("Lista de autores:");
-							for (int i = 0; i < listaAutores.length; i++) {
-								System.out.println(i + ". " + listaAutores[i]);
+							for (int contadorBucle = 0; contadorBucle < listaAutores.length; contadorBucle++) {
+								System.out.println(contadorBucle + ". " + listaAutores[contadorBucle]);
 								System.out.println("------------------");
 							}
 							do {
-								segundoNumeroUtil = Metodo.getIntBetween(-1, listaAutores.length - 1, "Introduce el número asignado al autor, (-1) para acabar");
+								segundoNumeroUtil = Metodo.getIntBetween(-1, listaAutores.length - 1, "Introduce el nÃºmero asignado al autor, (-1) para acabar");
 								if (segundoNumeroUtil == -1) {
 									break;
 								}
 								sePuede = true;
-								for (int i = 0; i < autoresActuales.length; i++) {
-									if (listaAutores[segundoNumeroUtil] == autoresActuales[i]) {
+								for (int contadorBucle = 0; contadorBucle < autoresActuales.length; contadorBucle++) {
+									if (listaAutores[segundoNumeroUtil] == autoresActuales[contadorBucle]) {
 										sePuede = false;		
 									}
 								}
@@ -135,41 +139,43 @@ public class LibroVariosAutores {
 								else System.out.println("Ese autor ya era autor del libro");
 							} while (segundoNumeroUtil != -1 && autoresActuales.length < listaAutores.length);
 							if (autoresActuales.length == listaAutores.length) {
-								System.out.println("Ya no hay más autores");
+								System.out.println("Ya no hay mÃ¡s autores");
 							}
 							listaLibros[primerNumeroUtil].setAutores(autoresActuales);
 							break;
 						case 3:
 							System.out.println("Lista de autores:");
 							autoresActuales = listaLibros[primerNumeroUtil].getAutores();
-							for (int i = 0; i < autoresActuales.length; i++) {
-								System.out.println(i + ". " + autoresActuales[i]);
+							for (int contadorBucle = 0; contadorBucle < autoresActuales.length; contadorBucle++) {
+								System.out.println(contadorBucle + ". " + autoresActuales[contadorBucle]);
 								System.out.println("------------------");
 							}
 							do {
-								segundoNumeroUtil = Metodo.getIntBetween(-1, listaAutores.length - 1, "Introduce el número asignado al autor, (-1) para acabar");
+								segundoNumeroUtil = Metodo.getIntBetween(-1, listaAutores.length - 1, "Introduce el nÃºmero asignado al autor, (-1) para acabar");
 								if (segundoNumeroUtil == -1) {
 									break;
 								}
 								autoresActuales[segundoNumeroUtil] = null;
-								for (int i = 0; i < autoresActuales.length; i++) {
-									if (autoresActuales[i] == null) {
-										autoresActuales[i] = autoresActuales[i + 1];
-										autoresActuales[i + 1] = null;
+								for (int contadorBucle = 0; contadorBucle < autoresActuales.length; contadorBucle++) {
+									if (autoresActuales[contadorBucle] == null) {
+										autoresActuales[contadorBucle] = autoresActuales[contadorBucle + 1];
+										autoresActuales[contadorBucle + 1] = null;
 									}
 								}
 								autoresActuales = Arrays.copyOf(autoresActuales, autoresActuales.length - 1);
-								for (int i = 0; i < autoresActuales.length; i++) {
-									System.out.print(i + ". " + autoresActuales[i]);
+								for (int contadorBucle = 0; contadorBucle < autoresActuales.length; contadorBucle++) {
+									System.out.print(i + ". " + autoresActuales[contadorBucle]);
 									System.out.println("------------------");
 								}
 								
 							} while (segundoNumeroUtil != -1 && autoresActuales.length > 1);
-							if (autoresActuales.length > 1) System.out.println("Ya no hay mas autores");
+							if (autoresActuales.length > 1) {
+								System.out.println("Ya no hay mas autores");
+							}
 							listaLibros[primerNumeroUtil].setAutores(autoresActuales);
 							break;
 						case 4:
-							System.out.println("El precio actual es " + listaLibros[primerNumeroUtil].getPrecio() + "€");
+							System.out.println("El precio actual es " + listaLibros[primerNumeroUtil].getPrecio() + "â‚¬");
 							numeroDouble = Metodo.getDoublePos("Introduce el nuevo precio");
 							listaLibros[primerNumeroUtil].setPrecio(numeroDouble);
 							break;
@@ -183,15 +189,15 @@ public class LibroVariosAutores {
 				}
 			case 5:
 				System.out.println("Listado de libros:");
-				for (int i = 0; i < listaLibros.length; i++) {
-					System.out.println(listaLibros[i].cadenaLibro());
+				for (int contadorBucle = 0; contadorBucle < listaLibros.length; contadorBucle++) {
+					System.out.println(listaLibros[contadorBucle].cadenaLibro());
 					System.out.println("------------------");
 				}
 				break;
 			case 6:
 				System.out.println("Listado de autores:");
-				for (int i = 0; i < listaAutores.length; i++) {
-					System.out.println(listaAutores[i]);
+				for (int contadorBucle = 0; contadorBucle < listaAutores.length; contadorBucle++) {
+					System.out.println(listaAutores[contadorBucle]);
 					System.out.println("------------------");
 				}
 				break;
