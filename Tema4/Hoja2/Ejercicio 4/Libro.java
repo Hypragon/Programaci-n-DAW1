@@ -44,12 +44,15 @@ public class Libro {
 	public String cadenaLibro() {
 		 return "Libro [titulo = " +  titulo + "\n"
 				+ this.cadenaAutores()
-				+ "\nprecio = " + precio + "€\n"
+				+ "\nprecio = " + precio + "â‚¬\n"
 				+ "cantidad = " + cantidad + "]";
 	}
 	public String cadenaAutores() {
 		String cadena = "";
 		for(int i = 0; i < this.autores.length; i++) {
+			if (i != 0) {
+				cadena += "\n";
+			}
 			cadena += this.autores[i];
 		}
 		return cadena;
