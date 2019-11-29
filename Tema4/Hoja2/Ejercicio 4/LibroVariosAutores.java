@@ -8,6 +8,7 @@ public class LibroVariosAutores {
 		Autor listaAutores[] = new Autor[0];
 		Autor autoresActuales[] = new Autor[0];
 		Libro listaLibros[] = new Libro[0];
+		Autor autoresBorrar[] = new Autor[0];
 		Integer opcionMenu, primerNumeroUtil, segundoNumeroUtil, tercerNumeroUtil;
 		String primeraCadenaUtil, segundaCadenaUtil;
 		Double numeroDouble;
@@ -155,24 +156,21 @@ public class LibroVariosAutores {
 								if (segundoNumeroUtil == -1) {
 									break;
 								}
-								autoresActuales[segundoNumeroUtil] = null;
-								for (int contadorBucle = 0; contadorBucle < autoresActuales.length; contadorBucle++) {
-									if (autoresActuales[contadorBucle] == null) {
-										autoresActuales[contadorBucle] = autoresActuales[contadorBucle + 1];
-										autoresActuales[contadorBucle + 1] = null;
+								autoresBorrar = new Autor[autoresActuales.length - 1];
+								for (int contadorBucle = 0, contadorBucle2 = 0; contadorBucle < autoresActuales.length; contadorBucle++) {
+									if (contadorBucle != segundoNumeroUtil) {
+										autoresBorrar[contadorBucle2++] = autoresActuales[contadorBucle];
 									}
 								}
-								autoresActuales = Arrays.copyOf(autoresActuales, autoresActuales.length - 1);
+								autoresActuales = autoresBorrar;
 								for (int contadorBucle = 0; contadorBucle < autoresActuales.length; contadorBucle++) {
-									System.out.print(i + ". " + autoresActuales[contadorBucle]);
+									System.out.println(contadorBucle + ". " + autoresActuales[contadorBucle]);
 									System.out.println("------------------");
 								}
-								
 							} while (segundoNumeroUtil != -1 && autoresActuales.length > 1);
-							if (autoresActuales.length > 1) {
-								System.out.println("Ya no hay mas autores");
+							if (autoresActuales.length < 2) {
+								System.out.println("Ya no hay mas autores que quitar");
 							}
-							listaLibros[primerNumeroUtil].setAutores(autoresActuales);
 							break;
 						case 4:
 							System.out.println("El precio actual es " + listaLibros[primerNumeroUtil].getPrecio() + "€");
@@ -206,4 +204,5 @@ public class LibroVariosAutores {
 		System.out.println("Adios");
 	} 
 }
+
 
