@@ -7,31 +7,31 @@ Dni
 private int numero;
 private char letra;
 public Dni(String dni){
-//Separa la parte numÈrica de la letra.
-//Como el atributo ìnumeroî es de tipo int, deber·s utilizar Integer.parseInt(Ö) para convertir el
-String en entero. El mÈtodo Integer.parseInt() lanza una excepciÛn cuando lo que recibe como
-par·metro no puede convertirse en n˙mero. No captures esta excepciÛn aquÌ, prop·gala al
-mÈtodo principal.
+//Separa la parte num√©rica de la letra.
+//Como el atributo ‚Äúnumero‚Äù es de tipo int, deber√°s utilizar Integer.parseInt(‚Ä¶) para convertir el
+String en entero. El m√©todo Integer.parseInt() lanza una excepci√≥n cuando lo que recibe como
+par√°metro no puede convertirse en n√∫mero. No captures esta excepci√≥n aqu√≠, prop√°gala al
+m√©todo principal.
 }
 public char calculaLetra(){
-//devuelve la letra que se corresponde con la parte numÈrica que tenemos guardada en el
+//devuelve la letra que se corresponde con la parte num√©rica que tenemos guardada en el
 //atributo numero
 }
 public boolean correcto() {
-//Devuelve true cuando la letra guardada en el atributo ìletraî, coincide con la que calculamos
-// en el mÈtodo calcularLetra()
+//Devuelve true cuando la letra guardada en el atributo ‚Äúletra‚Äù, coincide con la que calculamos
+// en el m√©todo calcularLetra()
 }
 public String toString(){
-//devuelve el dni en formato ì12345678-Sî
+//devuelve el dni en formato ‚Äú12345678-S‚Äù
 }
 EJERCICIOS EXCEPCIONES. HOJA 1
-El mÈtodo principal debe:
-? Pedir n˙meros de DNI, hasta que el usuario decida acabar el programa (lo indicar· dando como
-dni un ì*î)
-? Comprobar· si son correctos o no, en caso de ser correctos, los mostrar· por pantalla.
-? Todas las excepciones deben gestionarse desde el mÈtodo principal.
+El m√©todo principal debe:
+? Pedir n√∫meros de DNI, hasta que el usuario decida acabar el programa (lo indicar√° dando como
+dni un ‚Äú*‚Äù)
+? Comprobar√° si son correctos o no, en caso de ser correctos, los mostrar√° por pantalla.
+? Todas las excepciones deben gestionarse desde el m√©todo principal.
 Probad a introducir todo tipo de errores que se os ocurran al probar el programa. El programa debe ser
-capaz de continuar su ejecuciÛn, sea cual sea el error que suceda.
+capaz de continuar su ejecuci√≥n, sea cual sea el error que suceda.
 
  */
 public class ejercicio5 {
@@ -39,17 +39,18 @@ public class ejercicio5 {
 		String cadena = "";
 		DNI dni;
 		cadena = Metodo.getStringLim(9, "Introduce un DNI");
-		
-		while (cadena != "*") {
-			try{
-				dni = new DNI(cadena);
-				if (dni.correcto()) System.out.println(dni);
-			} catch (StringIndexOutOfBoundsException e) {
-				System.out.println("Los dni tienen 8 n˙meros y 1 letra");
-			} catch (NumberFormatException e) {
-				System.out.println("Los 8 primeros caracteres tienen que ser n˙meros");
+		while (cadena.compareTo("*") != 0) {
+			if (cadena.compareTo("*") != 0) {
+				try{
+					dni = new DNI(cadena);
+					if (dni.correcto()) System.out.println(dni);
+				} catch (StringIndexOutOfBoundsException e) {
+					System.out.println("Los dni tienen 8 n√∫meros y 1 letra");
+				} catch (NumberFormatException e) {
+					System.out.println("Los 8 primeros caracteres tienen que ser n√∫meros");
+				}
+				cadena = Metodo.getStringLim(9, "Introduce un DNI");
 			}
-			cadena = Metodo.getStringLim(9, "Introduce un DNI");
 		}
 	}
 }
