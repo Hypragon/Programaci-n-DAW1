@@ -39,8 +39,8 @@ public class ejercicio5 {
 		String cadena = "";
 		DNI dni;
 		cadena = Metodo.getStringLim(9, "Introduce un DNI");
-		while (cadena.compareTo("*") != 0) {
-			if (cadena.compareTo("*") != 0) {
+		while (str.equals("*")) {
+			if (str.equals("*")) {
 				try{
 					dni = new DNI(cadena);
 					if (dni.correcto()) System.out.println(dni);
