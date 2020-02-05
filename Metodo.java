@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.regex.PatternSyntaxException;
 
-public class Metodo {
+public abstract class Metodo {
 	public static Integer getInt(String texto) {	//pide un Integer
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Integer val = null;
@@ -208,6 +208,7 @@ public class Metodo {
 				System.out.println(texto);
 				car = null;
 				car = (char)br.read();
+				br.readLine();
 				error = false;
 			} catch (IOException e){
 				System.out.println("Ha habido un error, vuelve a intentarlo.");
@@ -256,5 +257,11 @@ public class Metodo {
 				break;
 			}
 		}
+	}
+	public static void arrTransmut(Object[] arr, n, m){	//Transmuta 2 posiciones en un array
+		Object bak;
+		bak = arr[n];
+		arr[n] = arr[m];
+		arr[m] = bak;
 	}
 }
