@@ -258,7 +258,7 @@ public abstract class Metodo {
 			}
 		}
 	}
-	public static void arrTransmut(Object[] arr, n, m){	//Transmuta 2 posiciones en un array
+	public static void arrTransmut(Object[] arr, int n, int m){	//Transmuta 2 posiciones en un array
 		Object bak;
 		bak = arr[n];
 		arr[n] = arr[m];
