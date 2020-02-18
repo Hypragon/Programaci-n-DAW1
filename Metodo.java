@@ -4,6 +4,7 @@ package ejercicio;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.regex.PatternSyntaxException;
 
 public abstract class Metodo {
@@ -263,5 +264,12 @@ public abstract class Metodo {
 		bak = arr[n];
 		arr[n] = arr[m];
 		arr[m] = bak;
+	}
+	@SuppressWarnings("unchecked")
+	public static <E> void arrListTransmut(ArrayList<E> arr, int n, int m) {
+		Object bak;
+		bak = arr.get(n);
+		arr.set(n, arr.get(m));
+		arr.set(m, (E) bak);
 	}
 }
